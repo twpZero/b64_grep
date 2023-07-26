@@ -8,6 +8,13 @@ Output is designed to be feed into a regex engine, accordingly each possible val
 
 Can also be used as a toolbox in other python scripts.
 
+## Demos
+### Simple Use
+<img width="616" alt="image" src="https://github.com/twpZero/b64_grep/assets/49241247/c9fd540f-c18a-4626-93f7-786574b580a6">
+
+### Double encoding
+<img width="1712" alt="image" src="https://github.com/twpZero/b64_grep/assets/49241247/41a1b03e-4e04-4d83-9d05-b6686d6d7cf5">
+
 ## CONTEXT
   Searching strings in base64 encoded data doesn't require decoding the said data.  
   However base 64 convert an input of 3 char at a time, to a 4 char output.  
