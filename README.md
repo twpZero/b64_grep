@@ -8,6 +8,13 @@ Output is designed to be feed into a regex engine, accordingly each possible val
 
 Can also be used as a toolbox in other python scripts.
 
+# Download
+[Download zip here ](https://github.com/twpZero/b64_grep/archive/refs/heads/main.zip)
+or 
+```bash 
+git clone https://github.com/twpZero/b64_grep.git
+```
+
 ## Demos
 ### Simple Use
 <img width="616" alt="image" src="https://github.com/twpZero/b64_grep/assets/49241247/c9fd540f-c18a-4626-93f7-786574b580a6">
