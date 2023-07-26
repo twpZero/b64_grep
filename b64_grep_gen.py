@@ -71,7 +71,7 @@ def alternative_b64encode(text,encoding="utf8"):
     @Resource https://en.wikipedia.org/wiki/Base64
     @Resource https://yara.readthedocs.io/en/stable/writingrules.html?highlight=base64#base64-strings
     """
-    return [str_b64encode("-"*decal+text,encoding)[[0,2,3][decal]:[-3,-2,-3][decal]] for decal in range(3)]
+    return [str_b64encode("-"*decal+text,encoding)[[0,2,3][decal]:[-3,-3,-3][decal]] for decal in range(3)]
 
 
 def gen_b64_regex(text,encoding="utf8"):
