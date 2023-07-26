@@ -95,19 +95,23 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='When used as a program, it generates the 3 possible B64 Permutations for a given cleartext.\nInput can be given as argument or via stdin (convenient for POSIX bash uses)\nOutput is designed to be feed into a regex engine, accordingly each possible value is separated by a pipe "|".\n\n',formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('text', metavar='text', type=str, nargs="?", help='Text to encode')
     parser.add_argument('encoding', metavar='encoding', type=str, nargs="?", help='Encoding to use', default="utf8")
+    parser.add_argument('-e', metavar='encoding', type=str, nargs="?", help='Encoding to use', dest="enc")
     args = parser.parse_args()
+
+    if(args.enc != None):
+        args.encoding = args.enc
+
     try:
         import sys
         if(args.text != None):
             print(gen_b64_regex(args.text,args.encoding))
         else:
             line = sys.stdin.readline()
-            while( line != '' and line != '\n' ): 
+            while( line != '' and line != '\n' ):
                 line = line.replace("\n","")
-                print(gen_b64_regex(line))
+                print(gen_b64_regex(line,args.encoding))
                 line = sys.stdin.readline()
         exit(0)
     except Exception as ex:
         sys.stderr("Error ! {}({})".format(ex,ex.message))
-        exit(1) 
-
+        exit(1)
