@@ -96,8 +96,11 @@ if __name__ == '__main__':
     parser.add_argument('text', metavar='text', type=str, nargs="?", help='Text to encode')
     parser.add_argument('encoding', metavar='encoding', type=str, nargs="?", help='Encoding to use', default="utf8")
     parser.add_argument('-e', metavar='encoding', type=str, nargs="?", help='Encoding to use', dest="enc")
+    parser.add_argument('-W', action="store_true", help='Windows Encoding (Powershell). Equivalent to -e "utf_16_be".', dest="win_enc")
     args = parser.parse_args()
 
+    if(args.win_enc):
+        args.enc = "utf_16_be"
     if(args.enc != None):
         args.encoding = args.enc
 
