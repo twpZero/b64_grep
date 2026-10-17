@@ -60,18 +60,19 @@ def str_b64encode(text,encoding="utf8"):
 def alternative_b64encode(text,encoding="utf8"):
     """ 
     Generates an str array containing the 3 possible b64 permutations for the specified (clear)text.
-    @Note encoding argument is handled by str_b64encode
+    @Note the text is shifted by 0, 1 and 2 bytes, so multi-byte encodings (utf_16_le) work too
 
     @Arg encoding defaults to "utf8"
 
-    @See str_b64encode
-    @Use str_b64encode
+    @Use base64.b64encode
 
     @Resource https://www.leeholmes.com/searching-for-content-in-base-64-strings/
     @Resource https://en.wikipedia.org/wiki/Base64
     @Resource https://yara.readthedocs.io/en/stable/writingrules.html?highlight=base64#base64-strings
     """
-    return [str_b64encode("-"*decal+text,encoding)[[0,2,3][decal]:[-3,-3,-3][decal]] for decal in range(3)]
+    # Shift by bytes, not chars: in multi-byte encodings (utf_16_le) a char is several bytes
+    data=bytes(text,encoding)
+    return [base64.b64encode(b"\x00"*decal+data).decode()[[0,2,3][decal]:[-3,-3,-3][decal]] for decal in range(3)]
 
 
 def gen_b64_regex(text,encoding="utf8"):
