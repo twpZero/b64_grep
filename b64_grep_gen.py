@@ -116,5 +116,5 @@ if __name__ == '__main__':
                 line = sys.stdin.readline()
         exit(0)
     except Exception as ex:
-        sys.stderr("Error ! {}({})".format(ex,ex.message))
+        sys.stderr.write("Error ! {}({})\n".format(type(ex).__name__,ex))
         exit(1)
